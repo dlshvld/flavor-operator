@@ -3,11 +3,12 @@
 # image will be published to ghcr.io/<user>/<name>
 name: flavor-operator
 # description will be included in the image's metadata
-description: This is my personal OS image.
+description: A Personal OS image based off of Aurora.
 
 # the base image to build on top of (FROM) and the version tag to use
-base-image: ghcr.io/ublue-os/silverblue-main
-image-version: latest # You can pin to a specific version of Fedora as well
+# Using Aurora
+base-image: ghcr.io/ublue-os/aurora
+image-version: stable # You can pin to a specific version of Fedora as well
 
 # module configuration, executed in order
 # you can include multiple instances of the same module
@@ -19,27 +20,72 @@ modules:
 
   - type: dnf
     repos:
+      files:
+        # Brave Browser
+        - https://brave-browser-rpm-release.s3.brave.com/brave-browser.repo
+        # luisbocanegra
+        - https://download.opensuse.org/repositories/home:luisbocanegra/Fedora_44/home:luisbocanegra.repo
+        # LibreWolf
+        - https://repo.librewolf.net/librewolf.repo
       copr:
         - atim/starship
+        - imput/helium
+        - matinlotfali/KDE-Rounded-Corners
+        - wezfurlong/wezterm-nightly
+      keys:
+        # Brave Browser
+        - https://brave-browser-rpm-release.s3.brave.com/brave-core.asc
     install:
+      install-weak-deps: false
       packages:
-        - micro
+        - wezterm
         - starship
+        - lsd
+        - helix
+        - helix-themes
+        - brave-origin
+        - librewolf
+        - helium-bin
+        - syncthing
+        - nextcloud-client
+        - torbrowser-launcher
+        - kwin-effect-roundcorners
+        - kde-material-you-colors
+        - plasma-panel-colorizer
     remove:
+      auto-remove: true
       packages:
-        # example: removing firefox (in favor of the flatpak)
-        # "firefox" is the main package, "firefox-langpacks" is a dependency
         - firefox
-        - firefox-langpacks # also remove firefox dependency (not required for all packages, this is a special case)
 
   - type: default-flatpaks
     configurations:
       - notify: true # Send notification after install/uninstall is finished (true/false)
-        scope: system
-        # If no repo information is specified, Flathub will be used by default
-        install: # system flatpaks we want all users to have and not remove
-          - org.mozilla.firefox
-          - org.gnome.Loupe
-      - scope: user # Also add Flathub user repo, but no user packages
+        install:
+          - org.cryptomator.Cryptomator
+          - com.bitwarden.desktop
+          - org.keepassxc.KeePassXC
+          - com.logseq.Logseq
+          - org.inkscape.Inkscape
+          - org.gimp.GIMP
+          - org.musicbrainz.Picard
+          - org.speedcrunch.SpeedCrunch
+          - org.videolan.VLC
+          - org.signal.Signal
+
+  - type: fonts
+    fonts:
+      nerd-fonts:
+        - SpaceMono
+      google-fonts:
+        - Manrope
+        - Zilla Slab
+      url-fonts:
+        - name: Inter
+          url: https://rsms.me/inter/download/
+
+  - type: chezmoi
+    repository: https://codeberg.org/dlshvld/dot
+    all-users: false
+    file-conflict-policy: replace
 
   - type: signing # this sets up the proper policy & signing files for signed images to work fully

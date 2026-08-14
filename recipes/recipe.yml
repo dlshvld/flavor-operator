@@ -69,7 +69,6 @@ modules:
           - org.gimp.GIMP
           - org.musicbrainz.Picard
           - org.speedcrunch.SpeedCrunch
-          - org.videolan.VLC
           - org.signal.Signal
 
   - type: fonts

@@ -81,7 +81,7 @@ modules:
         - Zilla Slab
       url-fonts:
         - name: Inter
-          url: https://rsms.me/inter/download/
+          url: https://github.com/rsms/inter/releases/download/v4.1/Inter-4.1.zip
 
   - type: chezmoi
     repository: https://codeberg.org/dlshvld/dot

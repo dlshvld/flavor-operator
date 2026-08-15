@@ -25,8 +25,8 @@ modules:
         - https://brave-browser-rpm-release.s3.brave.com/brave-browser.repo
         # luisbocanegra
         - https://download.opensuse.org/repositories/home:luisbocanegra/Fedora_44/home:luisbocanegra.repo
-        # LibreWolf
-        - https://repo.librewolf.net/librewolf.repo
+        # Mullvad
+        - https://repository.mullvad.net/rpm/stable/mullvad.repo
       copr:
         - atim/starship
         - imput/helium
@@ -38,14 +38,9 @@ modules:
     install:
       install-weak-deps: false
       packages:
-        - cargo
         - wezterm
-        - starship
-        - lsd
-        - helix
-        - helix-themes
         - brave-origin
-        - librewolf
+        - mullvad-browser
         - helium-bin
         - syncthing
         - nextcloud-client
@@ -60,7 +55,7 @@ modules:
 
   - type: default-flatpaks
     configurations:
-      - notify: true # Send notification after install/uninstall is finished (true/false)
+      - notify: false # Send notification after install/uninstall is finished (true/false)
         install:
           - org.cryptomator.Cryptomator
           - com.bitwarden.desktop

@@ -58,7 +58,6 @@ modules:
       - notify: false # Send notification after install/uninstall is finished (true/false)
         install:
           - org.cryptomator.Cryptomator
-          - com.bitwarden.desktop
           - org.keepassxc.KeePassXC
           - com.logseq.Logseq
           - org.inkscape.Inkscape

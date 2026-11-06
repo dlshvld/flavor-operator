@@ -32,6 +32,7 @@ modules:
         - imput/helium
         - matinlotfali/KDE-Rounded-Corners
         - wezfurlong/wezterm-nightly
+        - sneexy/zen-browser
       keys:
         # Brave Browser
         - https://brave-browser-rpm-release.s3.brave.com/brave-core.asc
@@ -48,6 +49,7 @@ modules:
         - kwin-effect-roundcorners
         - kde-material-you-colors
         - plasma-panel-colorizer
+        - zen-browser
     remove:
       auto-remove: true
       packages:
@@ -60,7 +62,6 @@ modules:
           - org.cryptomator.Cryptomator
           - org.keepassxc.KeePassXC
           - com.logseq.Logseq
-          - org.inkscape.Inkscape
           - org.gimp.GIMP
           - org.musicbrainz.Picard
           - org.speedcrunch.SpeedCrunch

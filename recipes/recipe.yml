@@ -47,13 +47,7 @@ modules:
         - nextcloud-client
         - torbrowser-launcher
         - kwin-effect-roundcorners
-        - python3
-        - python3-file-magic
-        - python3-dbus
-        - python3-numpy
-        - python3-pillow
-        - python3-gobject
-        - kde-material-you-colors
+        # - kde-material-you-colors
         - plasma-panel-colorizer
         - zen-browser
     remove:

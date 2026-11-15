@@ -37,7 +37,7 @@ modules:
         # Brave Browser
         - https://brave-browser-rpm-release.s3.brave.com/brave-core.asc
     install:
-      install-weak-deps: false
+      install-weak-deps: true
       packages:
         - wezterm
         - brave-origin
